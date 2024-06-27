@@ -1,7 +1,14 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../db.js';
 
-class Item extends Model {}
+class Item extends Model {
+  static associate(models) {
+    Item.belongsTo(models.Item, {
+      foreignKey: 'category_id', // Foreign key in the Category table
+      as: 'category',
+    });
+  }
+}
 
 Item.init(
   {

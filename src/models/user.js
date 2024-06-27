@@ -14,6 +14,7 @@ User.init(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       // allowNull defaults to true
     },
     password: {
@@ -24,6 +25,7 @@ User.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       // allowNull defaults to true
     },
   },
@@ -33,6 +35,6 @@ User.init(
   }
 );
 
-sequelize.sync();
+sequelize.sync({ force: true });
 
 export default User;
