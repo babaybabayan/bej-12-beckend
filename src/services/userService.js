@@ -66,4 +66,4 @@ class UserService {
   }
 }
 
-export default UserService;
+module.exports = UserService;

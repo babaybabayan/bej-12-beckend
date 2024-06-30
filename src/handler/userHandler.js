@@ -111,4 +111,4 @@ class UserHandler {
   }
 }
 
-export default UserHandler;
+module.exports = UserHandler;

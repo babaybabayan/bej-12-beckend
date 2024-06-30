@@ -26,4 +26,4 @@ class AuthHandler {
   }
 }
 
-export default AuthHandler;
+module.exports = AuthHandler;

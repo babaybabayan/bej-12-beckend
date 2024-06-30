@@ -1,6 +1,7 @@
-import User from '../models/user.js';
+const { User } = require('../../models');
 
 class UserRepository {
+  constructor() {}
   async getAll() {
     return await User.findAll();
   }
@@ -20,4 +21,4 @@ class UserRepository {
   }
 }
 
-export default UserRepository;
+module.exports = UserRepository;
