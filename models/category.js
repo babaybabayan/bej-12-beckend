@@ -16,10 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
     },
     {
-      paranoid: true,
       sequelize,
-      deletedAt: 'destroyTime',
-      underscored: true,
       modelName: 'category',
     }
   );

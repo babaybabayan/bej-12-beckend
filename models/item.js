@@ -22,8 +22,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       paranoid: true,
       sequelize,
-      deletedAt: 'destroyTime',
-      underscored: true,
       modelName: 'item',
     }
   );

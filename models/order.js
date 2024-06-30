@@ -22,10 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       quantity: DataTypes.INTEGER,
     },
     {
-      paranoid: true,
       sequelize,
-      deletedAt: 'destroyTime',
-      underscored: true,
       modelName: 'order',
     }
   );
