@@ -1,4 +1,4 @@
-const { Status } = require('../../models');
+const Status = require('../../models').status;
 class StatusRepository {
   constructor() {}
   async getAll() {

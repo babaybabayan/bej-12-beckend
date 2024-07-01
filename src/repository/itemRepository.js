@@ -1,4 +1,5 @@
-const { Item, Category } = require('../../models');
+const Item = require('../../models').item;
+const Category = require('../../models').category;
 
 class ItemRepository {
   constructor() {}
@@ -9,7 +10,6 @@ class ItemRepository {
           model: Category,
           required: true,
           as: 'category',
-          // attributes: ['name']
         },
       ],
     });
@@ -23,7 +23,7 @@ class ItemRepository {
   }
   async create(item) {
     return await Item.create({
-      category_id: item.categoryId,
+      categoryId: item.categoryId,
       name: item.name,
       price: item.price,
       quantity: item.quantity,
@@ -32,7 +32,7 @@ class ItemRepository {
   async update(item) {
     return Item.update(
       {
-        category_id: item.categoryId,
+        categoryId: item.categoryId,
         name: item.name,
         price: item.price,
         quantity: item.quantity,

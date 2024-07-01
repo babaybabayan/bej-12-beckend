@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       item.belongsTo(models.category, { foreignKey: 'categoryId', as: 'category' });
+      item.hasMany(models.order, { foreignKey: 'itemId', as: 'item' });
     }
   }
   item.init(
@@ -20,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
       quantity: DataTypes.FLOAT,
     },
     {
-      paranoid: true,
       sequelize,
       modelName: 'item',
     }

@@ -1,4 +1,7 @@
-const { Order, User, Item, Status } = require('../../models');
+const Order = require('../../models').order;
+const User = require('../../models').user;
+const Item = require('../../models').item;
+const Status = require('../../models').status;
 class OrderRepository {
   constructor() {}
   async getAll() {

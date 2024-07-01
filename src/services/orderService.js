@@ -5,10 +5,20 @@ class OrderService {
 
   async getAll() {
     try {
-      const order = await this.orderRepository.getAll();
+      const orders = await this.orderRepository.getAll();
+      const formattedOrder = orders.map((order) => ({
+        id: order.id,
+        email: order.user.email,
+        status: order.status.name,
+        quantity: order.quantity,
+        item: {
+          name: order.item.name,
+          price: order.item.price,
+        },
+      }));
       return {
         statusCode: 200,
-        order: order,
+        order: formattedOrder,
       };
     } catch (error) {
       return {
@@ -26,10 +36,20 @@ class OrderService {
           message: 'please insert id',
         };
       }
-      const order = await this.orderRepository.getById(id);
+      const orders = await this.orderRepository.getById(id);
+      const formattedOrder = orders.map((order) => ({
+        id: order.id,
+        email: order.user.email,
+        status: order.status.name,
+        quantity: order.quantity,
+        item: {
+          name: order.item.name,
+          price: order.item.price,
+        },
+      }));
       return {
         statusCode: 500,
-        order: order,
+        order: formattedOrder,
       };
     } catch (error) {
       return {
@@ -41,12 +61,6 @@ class OrderService {
 
   async create(order) {
     try {
-      if (!order.name) {
-        return {
-          statusCode: 409,
-          message: 'order name cannot be empty',
-        };
-      }
       await this.orderRepository.create(order);
       return {
         statusCode: 201,

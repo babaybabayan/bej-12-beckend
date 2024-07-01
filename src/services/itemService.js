@@ -6,9 +6,16 @@ class ItemService {
   async getAll() {
     try {
       const items = await this.itemRepository.getAll();
+      const formatterdItem = items.map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        category: item.category.name,
+      }));
       return {
         statusCode: 200,
-        items: items,
+        items: formatterdItem,
       };
     } catch (error) {
       return {
