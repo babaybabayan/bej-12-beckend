@@ -39,13 +39,12 @@ class OrderService {
       const orders = await this.orderRepository.getById(id);
       const formattedOrder = orders.map((order) => ({
         id: order.id,
-        email: order.user.email,
-        status: order.status.name,
         quantity: order.quantity,
-        item: {
-          name: order.item.name,
-          price: order.item.price,
-        },
+        trasactionId: order.trasactionId,
+        itemName: order.item.name,
+        price: order.item.price,
+        quantity: order.item.quantity,
+        category: order.item.category.name,
       }));
       return {
         statusCode: 500,

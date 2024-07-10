@@ -1,26 +1,14 @@
 const Order = require('../../models').order;
-const User = require('../../models').user;
 const Item = require('../../models').item;
-const Status = require('../../models').status;
 class OrderRepository {
   constructor() {}
   async getAll() {
     return await Order.findAll({
       include: [
         {
-          model: User,
-          required: true,
-          as: 'user',
-        },
-        {
           model: Item,
           required: true,
           as: 'item',
-        },
-        {
-          model: Status,
-          required: true,
-          as: 'status',
         },
       ],
     });
@@ -36,16 +24,15 @@ class OrderRepository {
     return await Order.create({
       userId: order.userId,
       itemId: order.itemId,
-      statusId: order.statusId,
+      transactionId: order.transactionId,
       quantity: order.quantity,
     });
   }
   async update(order) {
     return Order.update(
       {
-        userId: order.userId,
         itemId: order.itemId,
-        statusId: order.statusId,
+        transactionId: order.transactionId,
         quantity: order.quantity,
       },
       { where: { id: order.id } }
